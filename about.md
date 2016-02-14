@@ -11,5 +11,7 @@ I am fluent with: Linux (Debian & RedHat based), FreeBSD, Solaris
 Currently employed at LinkedIn, as Systems Engineer
 
 My LinkedIn page: [LinkedIn](https://in.linkedin.com/in/soumyadipdm)
+
 E-mail ID: soumyadip.bt@gmail.com
+
 IRC @Freenode.net nick: adminxor
