@@ -10,10 +10,10 @@ links:
   - name:         About
     url:          /about
   - name:         Blog
-    url:          http://muan.co
+    url:          http://soumyadipdm.github.io/
     external:     true
   - name:         GitHub
-    url:          http://github.com/muan
+    url:          http://github.com/soumyadipdm
     external:     true
 highlighter:      pygments
 permalink:        pretty
