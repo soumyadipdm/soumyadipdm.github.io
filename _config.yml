@@ -1,0 +1,9 @@
+name: Nerdy Scribbles
+url: http://soumyadipdm.github.io
+description: My scribbles on interesting stuffs on *nix, linux, devops, opensource
+
+permalink: /:year/:month/:day/:title/
+paginate: 10
+highlighter: pygments
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
