@@ -2,7 +2,6 @@
 layout: post
 title:  "Excited about github pages"
 date:   2016-02-15 22:35:08
-categories: update
 ---
 
 So I have been trying to move to github pages for a while, mostly because I wanted to blog in the comfort of commandline and markdown.

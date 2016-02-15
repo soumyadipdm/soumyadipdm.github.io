@@ -4,6 +4,6 @@ description: My scribbles on interesting stuffs on *nix, linux, devops, opensour
 
 permalink: /:year/:month/:day/:title/
 paginate: 10
-highlighter: pygments
+highlighter: rouge
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
