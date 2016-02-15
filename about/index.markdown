@@ -10,4 +10,5 @@ I believe all the boring/repetative tasks should be delegated to computers as th
 My current employer is LinkedIn, where I get to tease myself addressing scalability issues of different component of infrastructure.
 
 LinkedIn profile: https://in.linkedin.com/in/soumyadipdm
+
 E-mail: soumyadip.bt@gmail.com
