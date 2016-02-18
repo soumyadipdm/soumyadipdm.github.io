@@ -41,13 +41,13 @@ Let's go step by step:
 
 1. Initializes a hash table for a key-value mapping for name of the file and its inotify watch descriptor
 
-{% highlight c %}
+{% highlight c linenos %}
   wd_to_name = hash_initialize (n_files, NULL, wd_hasher, wd_comparator, NULL);
 {% endhighlight %}
 
 2. Descriptor mask is initialized with IN_MODIFY i.e inode modify event, as well as for other events like attribute change, file deletion or file movement (useful if the file being watched is deleted during this time)
 
-{% highlight c %}
+{% highlight c linenos %}
   uint32_t inotify_wd_mask = IN_MODIFY;
   /* TODO: Perhaps monitor these events in Follow_descriptor mode also,
      to tag reported file names with "deleted", "moved" etc.  */
@@ -59,7 +59,7 @@ Let's go step by step:
 
 4. If `-F` option is specified, i.e retry if the file(s) are deleted during the watch, it starts to monitor parent directories of the files. This is done to get an event when the files reappear in the directory again
 
-{% highlight c %}
+{% highlight c linenos %}
           if (follow_mode == Follow_name)
             {
               size_t dirlen = dir_len (f[i].name);
@@ -94,7 +94,7 @@ Let's go step by step:
 
 5. Function returns True if for some reason like watcher could not be added etc, so that `tail` can revert to normal mtime based polling. It returns False if there are no watchable file found
 
-{% highlight c %}
+{% highlight c linenos %}
   if (no_inotify_resources || found_unwatchable_dir
       || (follow_mode == Follow_descriptor && tailed_but_unwatchable))
     {
@@ -113,7 +113,7 @@ Let's go step by step:
 
 8. If `-p PID` option was specified i.e follow until PID dies, it checks if there's any change in file using `select(2)` every 1 second or number of seconds specified via `-s` option
 
-{% highlight c %}
+{% highlight c linenos %}
       if (pid)
         {
           if (writer_is_dead)
@@ -145,7 +145,7 @@ Let's go step by step:
 
 9. Here comes inotify. safe_read() function tries to read the inotify file descriptior to see if the aforementioned events have occured. It blocks on that read, until an event has occured.
 
-{% highlight c %}
+{% highlight c linenos %}
       if (len <= evbuf_off)
         {
           len = safe_read (wd, evbuf, evlen);
@@ -169,7 +169,7 @@ Let's go step by step:
 
 10. It checks for various events like attribute change, file deletion etc, if such event has occured for a file, removes it from the watcher list
 
-{% highlight c %}
+{% highlight c linenos %}
       if (ev->mask & (IN_ATTRIB | IN_DELETE | IN_DELETE_SELF | IN_MOVE_SELF))
         {
           /* Note for IN_MOVE_SELF (the file we're watching has
