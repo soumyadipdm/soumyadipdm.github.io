@@ -2,6 +2,7 @@ name: "tail -f My Scribbles"
 url: http://soumyadipdm.github.io
 description: My scribbles on interesting stuffs on *nix, linux, devops, opensource
 
+gems: [jekyll-paginate]
 permalink: /:year/:month/:day/:title/
 paginate: 10
 highlighter: rouge
