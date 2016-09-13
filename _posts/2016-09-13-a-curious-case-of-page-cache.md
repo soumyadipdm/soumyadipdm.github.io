@@ -475,4 +475,13 @@ So finally here's what is happening:
 
 I explained the whole thing to the app owners, with data to back it up. They checked and found there's been unusual read requests submitted to the app from particular set of clients and this has been going on for 3 months, the issue too started happening across cluster at the same time.
 
+Take aways:
+===========
+
+* If you have shared a resource, you have a bottleneck. Page cache is shared for all of disk IO from *all* disks in a node
+
+* SSD utilization being around 100% continuously could lead to a problem even though SSD is fast enough to satisfy IO requests within a milisecond
+
+* Fast disk like SSD has the potential to saturate page cache quickly, starving other disk IOps
+
 Happy ending!!

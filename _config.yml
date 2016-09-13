@@ -1,6 +1,6 @@
 name: "tail -f My Scribbles"
 url: http://soumyadipdm.github.io
-description: My scribbles on interesting stuffs on *nix, linux, devops, opensource
+description: My scribbles on interesting stuff on *nix, linux, devops, opensource
 
 gems: [jekyll-paginate]
 permalink: /:year/:month/:day/:title/
