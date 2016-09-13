@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Go, here I come"
+title:  "Gethostbyname vs. Getaddrinfo"
 date:   2016-09-09 19:50:33
 categories: "system programming, linux, dns"
 ---
