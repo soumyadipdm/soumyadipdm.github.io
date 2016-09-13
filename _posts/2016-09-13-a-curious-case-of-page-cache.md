@@ -464,7 +464,7 @@ So finally here's what is happening:
 
 4. kswapd asks flusher daemons to write out dirty pages to disk, while putting LRU pages in the free list
 
-5. Step 1 continues, step 3 continues. kswapd now starts to put Active pages from page cache into the free list
+5. Step 1 continues, step 3 continues. kswapd now starts to put Active pages from page cache into the free list (due to aggressive `vm.swappiness = 1`)
 
 6. Processes start to encounter Major faults, incurring disk IO
 
