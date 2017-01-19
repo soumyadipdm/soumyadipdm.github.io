@@ -9,4 +9,4 @@ I have trying to learn [Go](http://golang.org/) for a while, but for one or the 
 
 So I grabbed ["The Go Programming Language"](http://www.amazon.in/Go-Programming-Language-Alan-Donovan/dp/9332569711) book and started reading. It's fun of course to learn Go, I know C and I can see the similarities (not many, but look and feel are quite similar).
 
-I have "The C Programming Language", "Python Cookbok", and now "The Go Programming Language", all side by side. It's going to fun!
+I have "The C Programming Language", "Python Cookbook", and now "The Go Programming Language", all side by side. It's going to be fun!
