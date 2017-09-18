@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Flask vs. Tornado vs. Klein vs. Sanic - simple performance comparision of Python web frameworks
+title:  "Flask vs. Tornado vs. Klein vs. Sanic - simple performance comparision of Python web frameworks"
 date:   2017-09-18 00:36:33
 categories: "python,webframeworks,devops,tools,api,flask,tornado,klein,sanic"
 ---
