@@ -11,8 +11,7 @@ I have been developing a high-performance RESTful API that'd have to serve poten
 
 I inteded to just run "Hello world!" on all of the above frameworks, and run test. Nothing fancy, just to give myself an idea, which one I should go with.
 
-Sample apps:
-------------
+### Sample apps:
 
 **Flask App:**
 
@@ -90,8 +89,7 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8888)
 {% endhighlight %}
 
-Test Tool:
-----------
+### Test Tool:
 
 I wanted basic http test (I was running "hello, world", what more can I expect!), so I downloaded and compiled [wrk](https://github.com/wg/wrk).
 
@@ -108,9 +106,7 @@ I ran wrk with following options:
 --latency: show me latency percentiles
 ```
 
-
-The Result:
------------
+### The Result:
 
 **Flask:**
 
@@ -185,12 +181,13 @@ Requests/sec:   4907.53
 Transfer/sec:    613.44KB
 ```
 
-Conclusion:
------------
+### Conclusion:
 
 Sanic is the clear winner with little less than 5k RPS and 56ms latency at 90th percentile. It draws power from async IO in python 3.5 or above. I ran `sanic` in python 3.5 virtual env, rest in python 2.7. Comparing `Tornado` and `Klein`, the formar gives slightly better performance. `Flask` is the slowest of all, obviously, because it's not async framework. When I ran `Tornado` & `Klein` in python 3.5, I got slightly better RPS, about 100 RPS more.
 
 So looks like I will use `sanic` and `python 3.6` to build my high-performance API server, and thus my venture into async programming starts. As promised, I will definitely make the project available on my github page.
+
+
 
 ## Make your infrastructure searchable using Elasticsearch - Mitra
 *date:   2017-07-16 01:58:33*
@@ -200,8 +197,7 @@ So looks like I will use `sanic` and `python 3.6` to build my high-performance A
 As a weekend project and to play-around with Elasticsearch, I started writing [a tool](https://github.com/soumyadipdm/mitra), which to some extent borrows ideas from [osquery](https://osquery.io). This tool is to index all important information about your servers/OS/app and make them searchable from a centralized place. It uses [Elasticsearch](https://www.elastic.co) to index the documents.
 
 
-Use-cases:
-----------
+### Use-cases:
 
  1. How many servers with 4.4 Linux kernel available in my infrastructure?
  2. How many servers do not have zsh installed?
@@ -217,8 +213,7 @@ Use-cases:
 
   `filename:"/etc/fstab" AND content:ext4`
 
-How does it work:
------------------
+### How does it work:
 
 The tool has two mode: indexer and searcher
 
@@ -230,8 +225,8 @@ Document ID is determined from sha256 hash of host name and name of the file bei
 
 **Searcher:** (WIP) I am working to make a lib and a cli for searching, for now I am using Kibana.
 
-Config file:
-------------
+### Config file:
+
 ```
 log:
   file: /tmp/runner.log  # log file location
@@ -258,21 +253,23 @@ files:  # list of files to index into elasticsearch
 frequency: 300  # how frequently the indexer runner should run, in seconds
 ```
 
-Installation:
------------------
+### Installation:
+
 ```
 python setup.py build
 python setup.py install
 ```
 
-How to run:
------------------
+### How to run:
+
 **Indexer**:
 ```
 python bin/runner.py -c config/runner.yaml
 ```
 
 **Note**: You can also use [Kibana](https://www.elastic.co/products/kibana) to search through the indices
+
+
 
 
 ## "A curious case of page cache"
@@ -749,8 +746,7 @@ So finally here's what is happening:
 
 I explained the whole thing to the app owners, with data to back it up. They checked and found there's been unusual read requests submitted to the app from particular set of clients and this has been going on for 3 months, the issue too started happening across cluster at the same time.
 
-Take aways:
-===========
+### Take aways:
 
 * If you have shared a resource, you have a bottleneck. Page cache is shared for all of disk IO from *all* disks in a node
 
@@ -759,6 +755,7 @@ Take aways:
 * Fast disk like SSD has the potential to saturate page cache quickly, starving other disk IOps
 
 Happy ending!!
+
 
 
 
@@ -788,6 +785,7 @@ I am not sure why only AAAA record and not A record for the extra stupid queries
 On the other hand, `getaddrinfo` handles the query smartly. It just queries only one of the DNS (first `nameserver` entry in /etc/resolv.conf) server, one for A record and another for AAAA record.
 
 With a combination of `strace` and `tcpdump` I was able to see why it was taking so long for ``getent hosts `hostname` `` to finish. Now I know why it's advised to use getaddrinfo.
+
 
 
 
@@ -860,14 +858,14 @@ Here's the comment in [do_command.c](https://git.fedorahosted.org/cgit/cronie.gi
 
 
 
+
 ## Dissecting Linux Performance Bottlenecks: CPU
 *date:   "2016-02-21 19:56:49"*
 *categories: "linux, performance*
 
 This is the first of my "Linux Performance" series. In this part, I am going to be focusing on CPU and Linux process scheduler as performance bottlenecks, how to detect it etc. I will later write a series focusing on tuning resources etc.
 
-uptime(1):
--------
+### uptime(1):
 
 While discovering the entire system, `uptime` can come in-handy. It gives a glimps of whether a system has been busy in the last 15 minutes and if it's going better or worse. It's an average of __total number of runnable (running + waiting to run) and uninterruptable (i.e waiting for IO etc) processes divided by the number of cpu (this includes CPU hardware threads)__
 
@@ -878,8 +876,7 @@ While discovering the entire system, `uptime` can come in-handy. It gives a glim
 
 In this case, I see that system was sitting almost idle, but in the last minute some processes ran. But keep in mind that these processes could have been CPU bound or IO bound or both. `uptime` does not give any clue to that.
 
-pidstat(1):
---------
+### pidstat(1):
 
 If I want to know what's using cpu, I run `pidstat` to see what's going on, `-I` option devides the %CPU count by the total number of CPU threads. A CPU saturation can be detected if the %CPU goes >= 100%
 
@@ -953,8 +950,7 @@ Other important fields are %usr and %system. High %usr can be caused by applicat
 
 _Quick Tip_: If you want to know what a particular application is doing at the moment, you can take a look at `/proc/XXX/wchan`, `/proc/XXX/status`, `/proc/XXX/syscall` files, where `XXX` stands for the PID of the process. For a process which is completely running in userspace, you would not see any syscall entry, `wchan` will be `0`, and `status` file would say state as running. To get more insight of such a process, you may need to attach GDB to it (if it's an ELF binary process) or may invoke other debuggers (if the process is of interpretive language like Python, Ruby, JAVA etc.)
 
-mpstat(1):
--------
+### mpstat(1):
 
 For an SMP (Symmetric Multiprocessing) system, it is worth verifying if the application is able to take advantage of multiple CPU cores and hardware threads. Suppose if the `pidstat` output above showed me 50% CPU time and ~0% system time, it would mean that the process is using only 1 of 2 cpu cores available (also watch out for CPU column, which shows the processor number, as reported by /proc/cpuinfo, the process was running on during the smapling time). If the process is reported to be "slower than expected", I would investigate more if the process is able to use more than one core at all. This is where mpstat comes in handy.
 
@@ -1036,8 +1032,7 @@ Average:       1   90.32    0.00    0.00    0.00    0.00    0.08    0.00    0.00
 
 In this example, we can see that utilization of one of the cores is always almost 100%. The other core is almost idle. This could indicate that the appkication is probably not multithreaded or unable to use multiple cores. Before diving into application troubleshooting, I would check for any hardware issue. Depending upon the hardware vendor (or if it's a virtual machine you may need to check VM settings in KVM or ESXi), I would take a look at the faults reported by service processor either via `ipmitool` or via the service processor console. I have seen power and temperature issues causing CPU to disable certain cores [refer Intel SpeedStep technology](https://en.wikipedia.org/wiki/SpeedStep)
 
-Processor Affinity and taskset(1):
-----------------------------------
+### Processor Affinity and taskset(1):
 
 If it's found that the process only running on a single core, I would verify if the processor affinity of that process is set properly. `taskset` command gets and sets processor affinity of a process. Man pages of `taskset(1)` and `sched_getaffinity(2)/sched_setaffinity(2)` have good detail on the performance impact on process. Sometimes a process might want to run on a single CPU to leverage already warm L1/L2 caches.
 
@@ -1050,8 +1045,7 @@ In the above example, PID 4927 is set to run on all available processors (two in
 
 Let's look at things from the process scheduler's perspective and see if it all looks good.
 
-Scheduler Statistics:
----------------------
+### Scheduler Statistics:
 
 The first thing I will look is the `sched` file in proc a specific pid, it contains the scheduler statistics. The most important parts for troubleshooting are `nr_voluntary_switches` and `nr_involuntary_switches`.
 
@@ -1084,6 +1078,9 @@ numa_faults_memory, 0, 0, 1, 0, -1
 numa_faults_memory, 1, 0, 0, 0, -1
 {% endhighlight %}
 
+
+
+
 ## Dissecting `tail -f`: linux inotify
 *date:   2016-02-17 23:06:25*
 *categories: linux, C, system call*
@@ -1094,8 +1091,7 @@ The other day I was in need for a utility that would basically work like `tail -
 
 I knew about `inotify(7)` and many people attempting to write Python libraries based on it, but did not expect that `tail` would have already implemented it.
 
-A bit about inotify:
---------------------
+### A bit about inotify:
 
 Before exploring the code of `tail`, let's first talk about `inotify(7)` and why is it so awesome. `inotify` stands for Inode Notifier, as far as I can see it was first introduced in 2005, primarily written by Robert Love. I have his book "Linux System Programming" and love every bit of it. `inotify` itself is not a system call, rather it's a collection of system calls like:  inotify_init(2), inotify_add_watch(2), inotify_rm_watch(2) etc. Using thesesystem calls, one can "monitor" inode information changes. Inode here could be of a file or for a directory. It's fully event based. So a good implementation of it does not suffer from high CPU usage, unlike that of loops calling `fstat(2)` to check for `mtime`. With `inotify(7)` one can just wait for events like `IN_MODIFY`, which is what I was looking for. When I get confused between `poll(2)`/`epoll(7)`/`select(2)` and `inotify(7)`, I try to remind myself that `poll` and its friends can be applied on any kind of IO entity like stream, socket etc. with an event trigger condition that may or may not be related to IO the entity directly, but `inotify` is designed for filesystems objects, with inode events as triggers.
 
@@ -1111,8 +1107,7 @@ Here's what the man page says:
        call fails with the error EINTR; see signal(7)).
 ```
 
-A curious case of `tail -f`:
-----------------------------
+### A curious case of `tail -f`:
 
 `tail` infact implements both inotify and non-inotify i.e fstat-mtime-loop based implementation used for `-f` option.
 
@@ -1281,6 +1276,7 @@ Let's go step by step:
 
 
 11. Calls check_fspec() to check for new data in the event of IN_MODIFY. If there's new data, dump_remainder() is called to print new data i.e it seeks the pointer to the end of last read byte and reads till EOF, thus avoiding duplication. [dump_remainder](http://git.savannah.gnu.org/cgit/coreutils.git/tree/src/tail.c#n395)
+
 
 
 
