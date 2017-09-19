@@ -1,6 +1,8 @@
 ## Flask vs. Tornado vs. Klein vs. Sanic - simple performance comparision of Python web frameworks
 *date:   2017-09-18 00:36:33*
+
 *categories: python,webframeworks,devops,tools,api,flask,tornado,klein,sanic*
+
 
 I have been developing a high-performance RESTful API that'd have to serve potentially more than 10k clients with many hundreds to thousands concurrent connections per second, doing IO-heavy work. I will definitely post more on this at a later point. With the criteria in mind, I set out to do some small perf test on the following frameworks:
 
@@ -191,6 +193,7 @@ So looks like I will use `sanic` and `python 3.6` to build my high-performance A
 
 ## Make your infrastructure searchable using Elasticsearch - Mitra
 *date:   2017-07-16 01:58:33*
+
 *categories: "python,elasticsearch,devops,tools*
 
 
@@ -274,7 +277,9 @@ python bin/runner.py -c config/runner.yaml
 
 ## "A curious case of page cache"
 *date:   2016-09-13 12:13:33*
+
 *categories: "linux, high load, performance, page cache*
+
 
 The other day I was called in for troubleshooting high load issue in a cluster. The cluster basically runs Java apps, and few nodes in the cluster consistently see high load. The load stays high (with load average hopping to 100+) for 5-6 hours, comes down for few hours and goes up once again. The issue was happening on random nodes in the cluster but at least 2 nodes were seeing this issue more frequently.
 
@@ -761,7 +766,9 @@ Happy ending!!
 
 ## "Gethostbyname vs. Getaddrinfo"
 *date:   2016-09-09 19:50:33*
+
 *categories: "system programming, linux, dns*
+
 
 It's been a while since my last post, about 2 months. The other I faced some strange issue with something as simple as ``getent hosts `hostname` ``. We used this to determine IPv4 addr of a host and used that for setting SRC IP for an application. I know this is not at all ideal way of doing it, this is how it has been for a long time with the legacy app.
 
@@ -791,7 +798,9 @@ With a combination of `strace` and `tcpdump` I was able to see why it was taking
 
 ## Go, here I come
 *date:   2016-07-23 01:22:20*
+
 *categories: programming, go*
+
 
 I have trying to learn [Go](http://golang.org/) for a while, but for one or the other reason could not start it properly. The other day I thought it's the right time to start learning Go, I have an idea in my mind (more of that will come later) and Go would a perfect fit to deal with it.
 
@@ -803,7 +812,9 @@ I have "The C Programming Language", "Python Cookbook", and now "The Go Programm
 
 ## When to prefer fork() over vfork()
 *date:   2016-07-09 15:34:20*
+
 *categories: linux, C, system call*
+
 
 It's been a very long time since my last post. And all this time even though I was real busy in personal and professional fronts, my fingers etched to write something down on this page.
 
@@ -861,7 +872,9 @@ Here's the comment in [do_command.c](https://git.fedorahosted.org/cgit/cronie.gi
 
 ## Dissecting Linux Performance Bottlenecks: CPU
 *date:   "2016-02-21 19:56:49"*
+
 *categories: "linux, performance*
+
 
 This is the first of my "Linux Performance" series. In this part, I am going to be focusing on CPU and Linux process scheduler as performance bottlenecks, how to detect it etc. I will later write a series focusing on tuning resources etc.
 
@@ -1083,7 +1096,9 @@ numa_faults_memory, 1, 0, 0, 0, -1
 
 ## Dissecting `tail -f`: linux inotify
 *date:   2016-02-17 23:06:25*
+
 *categories: linux, C, system call*
+
 
 We all know about the little programs that make up GNU coreutils, I feel we always take them for granted. They contain some extraordinary code, at times complex too.
 
@@ -1282,7 +1297,9 @@ Let's go step by step:
 
 ## Hello Github pages!
 *date:   2016-02-15 00:06:25*
+
 *categories: general update*
+
 
 So I have been trying to move to github pages for a while, mostly because I wanted to blog in the comfort of commandline and markdown.
 
