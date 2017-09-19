@@ -1,10 +1,5 @@
+theme: jekyll-theme-hacker
 name: "tail -f My Scribbles"
-url: http://soumyadipdm.github.io
-description: My scribbles on interesting stuff on *nix, linux, devops, opensource
-
-gems: [jekyll-paginate]
-permalink: /:year/:month/:day/:title/
-paginate: 10
-highlighter: rouge
-
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+description: "My scribbles on interesting stuff on *nix, linux, devops, opensource"
+show_downloads: false
+google_analytics: UA-74076516-1

@@ -19,7 +19,7 @@ Sample apps:
 
 **Flask App:**
 
-```
+{% highlight python %}
 from flask import Flask
 app = Flask(__name__)
 
@@ -29,11 +29,11 @@ def hello_world():
 
     if __name__ == "__main__":
         app.run(host="0.0.0.0", port=8888)
-```
+{% endhighlight %}
 
 **Tornado App**
 
-```
+{% highlight python %}
 import tornado.httpserver
 import tornado.ioloop
 import tornado.options
@@ -62,11 +62,11 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+{% endhighlight %}
 
 **Klein App:**
 
-```
+{% highlight python %}
 from klein import run, route
 
 @route("/")
@@ -74,12 +74,12 @@ def home(request):
     return "Hello World!"
 
 run("0.0.0.0", 8888)
-```
+{% endhighlight %}
 
 
 **Sanic App**
 
-```
+{% highlight python %}
 from sanic import Sanic
 from sanic.response import json
 
@@ -91,7 +91,7 @@ async def test(request):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8888)
-```
+{% endhighlight %}
 
 Test Tool:
 ----------
