@@ -1,4 +1,4 @@
-##"Exploring D-bus for async application programming"
+## Exploring D-bus for async application programming
 *date:   2017-10-31 18:44:53*
 
 *categories: dbus,python,api,sanic*
